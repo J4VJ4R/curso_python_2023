@@ -1,10 +1,6 @@
-
 name = "Javier"
-lastname = "Jaramillo"
-age = 39
-
-print(name)
-print(lastname)
-print(age)
-""" concatenate """
-print(f'Nombre: {name} \nLastname: {lastname} \nAge: {age}' )
+age = 41
+"""
+Show some comments about aplication
+"""
+print(f'Name: {name} age: {age}')
