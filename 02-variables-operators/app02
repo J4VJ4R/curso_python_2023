@@ -1,0 +1,10 @@
+print('='*30)
+print('--------- TYPE CHARACTER ---------')
+print('='*30)
+
+char = input('--> ')
+vowels = ['a', 'e', 'i', 'o', 'u']
+if(char in vowels):
+  print('The character is a vowel')
+else:
+  print('The character is not a vowel')
