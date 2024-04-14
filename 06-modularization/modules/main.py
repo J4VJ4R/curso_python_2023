@@ -1,5 +1,6 @@
-import febonacci
+# import febonacci
+import febonacci as f
 
-febonacci.fibo(20)
+f.fibo(20)
 
-print(febonacci.fibo2(20))
+print(f.fibo2(20))
