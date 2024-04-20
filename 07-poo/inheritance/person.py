@@ -11,3 +11,17 @@ class Person:
 
 class Client(Person):
   pass
+
+#Class customer inheritance from person
+
+class Employee(Person):
+  def __init__(self, name, age, salary):
+    super().__init__(name, age)
+    self.salary = salary
+
+  def detail_customer(self):
+    super().details_person()
+    print('Salary:', self.salary)
+
+  def __str__(self):
+    return super().__str__() + f'\nSalary: {self.salary}'
