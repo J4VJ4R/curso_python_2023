@@ -14,5 +14,25 @@ def read_file():
     print(texts)
   else:
     print('File doesn\t exist')
+def add_data():
+  if path.isfile('./08-errors-files/files/text.txt'):
+    file = open('./08-errors-files/files/text.txt', 'a')
+    file.write('\nHello Juan')
+    file.close()
+  else:
+    print('File doesn\'t exist')
+def update_data():
+  if path.isfile('./08-errors-files/files/text.txt'):
+    file = open('./08-errors-files/files/text.txt', 'r+')
+    texts = file.readlines()
+    texts[1] = 'Hello Pedro\n'
+    # file.write('\nHello Javi')
+    print(texts)
+    file.seek(0)
+    file.writelines(texts)
+    file.close()
+    print(texts)
 # write_file()
-read_file()
+# read_file()
+# add_data()
+update_data()
