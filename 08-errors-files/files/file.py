@@ -32,7 +32,11 @@ def update_data():
     file.writelines(texts)
     file.close()
     print(texts)
+def delete_data():
+  file = open('./08-errors-files/files/text.txt', 'w')
+  file.close()
 # write_file()
 # read_file()
 # add_data()
-update_data()
+# update_data()
+delete_data()
