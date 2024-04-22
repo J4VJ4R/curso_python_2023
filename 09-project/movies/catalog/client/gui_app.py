@@ -39,3 +39,13 @@ class Frame(tk.Frame):
     self.name_label = tk.Label(self, text = 'Genre: ')
     self.name_label.config(font = ('Arial', 12, 'bold'))
     self.name_label.grid(row = 2, column = 0, padx=10, pady=10)
+    #Entries for fields
+    self.entry_name = tk.Entry(self)
+    self.entry_name.config(width=50, state='disabled', font=('Arial', 12))
+    self.entry_name.grid(row=0, column=1, padx=10, pady=10)
+    self.entry_duration = tk.Entry(self)
+    self.entry_duration.config(width=50, state='disabled', font=('Arial', 12))
+    self.entry_duration.grid(row=1, column=1, padx=10, pady=10)
+    self.entry_genre = tk.Entry(self)
+    self.entry_genre.config(width=50, state='disabled', font=('Arial', 12))
+    self.entry_genre.grid(row=2, column=1, padx=10, pady=10)
