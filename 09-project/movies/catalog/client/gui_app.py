@@ -13,7 +13,7 @@ def menu_bar(root):
   query_data = tk.Menu(bar_menu, tearoff=0)
   bar_menu.add_cascade(label='Query Data', menu=query_data)
   query_data.add_command(label='Test1')
-  
+
   bar_menu.add_cascade(label='Config')
   bar_menu.add_cascade(label='Help')
 
@@ -22,4 +22,20 @@ class Frame(tk.Frame):
     super().__init__(root, width=480, height=320 )
     self.root = root
     self.pack()
-    self.config(bg='green')
+    # self.config(bg='green')
+
+    self.movies_fields()
+  def movies_fields(self):
+    #Labels for fields
+    #Row for name
+    self.name_label = tk.Label(self, text = 'Name: ')
+    self.name_label.config(font = ('Arial', 12, 'bold'))
+    self.name_label.grid(row = 0, column = 0, padx=10, pady=10)
+    #Row for Duration
+    self.name_label = tk.Label(self, text = 'Duration: ')
+    self.name_label.config(font = ('Arial', 12, 'bold'))
+    self.name_label.grid(row = 1, column = 0, padx=10, pady=10)
+    #Row for Genre
+    self.name_label = tk.Label(self, text = 'Genre: ')
+    self.name_label.config(font = ('Arial', 12, 'bold'))
+    self.name_label.grid(row = 2, column = 0, padx=10, pady=10)
