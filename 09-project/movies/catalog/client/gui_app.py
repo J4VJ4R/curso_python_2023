@@ -42,10 +42,25 @@ class Frame(tk.Frame):
     #Entries for fields
     self.entry_name = tk.Entry(self)
     self.entry_name.config(width=50, state='disabled', font=('Arial', 12))
-    self.entry_name.grid(row=0, column=1, padx=10, pady=10)
+    self.entry_name.grid(row=0, column=1, padx=10, pady=10, columnspan=2)
     self.entry_duration = tk.Entry(self)
     self.entry_duration.config(width=50, state='disabled', font=('Arial', 12))
-    self.entry_duration.grid(row=1, column=1, padx=10, pady=10)
+    self.entry_duration.grid(row=1, column=1, padx=10, pady=10, columnspan=2)
     self.entry_genre = tk.Entry(self)
     self.entry_genre.config(width=50, state='disabled', font=('Arial', 12))
-    self.entry_genre.grid(row=2, column=1, padx=10, pady=10)
+    self.entry_genre.grid(row=2, column=1, padx=10, pady=10, columnspan=2)
+    #Button new
+    self.new_button = tk.Button(self, text="New")
+    self.new_button.config(width=20, font=('Arial', 12, 'bold'), fg='#DAD5D6', 
+                          bg='#158645', cursor='hand2', activebackground='#35BD6F')
+    self.new_button.grid(row=4, column=0, padx=10, pady=10)
+    #Button save
+    self.save_button = tk.Button(self, text="Save")
+    self.save_button.config(width=20, font=('Arial', 12, 'bold'), fg='#DAD5D6', 
+                          bg='#1658A2', cursor='hand2', activebackground='#3586DF')
+    self.save_button.grid(row=4, column=1, padx=10, pady=10)
+    #Button cancel
+    self.cancel_button = tk.Button(self, text="Cancel")
+    self.cancel_button.config(width=20, font=('Arial', 12, 'bold'), fg='#DAD5D6', 
+                          bg='#BD152E', cursor='hand2', activebackground='#E15370')
+    self.cancel_button.grid(row=4, column=2, padx=10, pady=10)
