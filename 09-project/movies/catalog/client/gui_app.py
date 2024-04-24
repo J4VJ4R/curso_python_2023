@@ -110,3 +110,13 @@ class Frame(tk.Frame):
     self.table.heading('#3', text='GENRE')
     #Fill some data
     self.table.insert('', 0, text='1', values=('The Avengers', '2.35', 'Action'))
+    #Button editar
+    self.edit_button = tk.Button(self, text="Edit")
+    self.edit_button.config(width=20, font=('Arial', 12, 'bold'), fg='#DAD5D6', 
+                          bg='#158645', cursor='hand2', activebackground='#35BD6F')
+    self.edit_button.grid(row=5, column=0, padx=10, pady=10)
+    #Button eliminar
+    self.cancel_button = tk.Button(self, text="Delete")
+    self.cancel_button.config(width=20, font=('Arial', 12, 'bold'), fg='#DAD5D6', 
+                          bg='#BD152E', cursor='hand2', activebackground='#E15370')
+    self.cancel_button.grid(row=5, column=1, padx=10, pady=10)
