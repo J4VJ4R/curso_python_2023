@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import ttk
 
 def menu_bar(root):
   bar_menu = tk.Menu(root)
@@ -23,9 +24,9 @@ class Frame(tk.Frame):
     self.root = root
     self.pack()
     # self.config(bg='green')
-
     self.movies_fields()
     self.fields_disabled()
+    self.movies_table()
   def movies_fields(self):
     #Labels for fields
     #Row for name
@@ -57,17 +58,17 @@ class Frame(tk.Frame):
     self.new_button = tk.Button(self, text="New", command=self.fields_available)
     self.new_button.config(width=20, font=('Arial', 12, 'bold'), fg='#DAD5D6', 
                           bg='#158645', cursor='hand2', activebackground='#35BD6F')
-    self.new_button.grid(row=4, column=0, padx=10, pady=10)
+    self.new_button.grid(row=3, column=0, padx=10, pady=10)
     #Button save
     self.save_button = tk.Button(self, text="Save", command=self.save_data)
     self.save_button.config(width=20, font=('Arial', 12, 'bold'), fg='#DAD5D6', 
                           bg='#1658A2', cursor='hand2', activebackground='#3586DF')
-    self.save_button.grid(row=4, column=1, padx=10, pady=10)
+    self.save_button.grid(row=3, column=1, padx=10, pady=10)
     #Button cancel
     self.cancel_button = tk.Button(self, text="Cancel", command=self.fields_disabled)
     self.cancel_button.config(width=20, font=('Arial', 12, 'bold'), fg='#DAD5D6', 
                           bg='#BD152E', cursor='hand2', activebackground='#E15370')
-    self.cancel_button.grid(row=4, column=2, padx=10, pady=10)
+    self.cancel_button.grid(row=3, column=2, padx=10, pady=10)
 
   def fields_available(self):
     #Entry configuration
@@ -98,3 +99,14 @@ class Frame(tk.Frame):
   def save_data(self):
     #Save data
     self.fields_disabled()
+  def movies_table(self):
+    #Create table
+    self.table = ttk.Treeview(self, columns=('Name', 'Duration', 'Genre'))
+    self.table.grid(row=4, column=0, columnspan=4)
+    #Headers names
+    self.table.heading('#0', text='ID')
+    self.table.heading('#1', text='NAME')
+    self.table.heading('#2', text='DURATION')
+    self.table.heading('#3', text='GENRE')
+    #Fill some data
+    self.table.insert('', 0, text='1', values=('The Avengers', '2.35', 'Action'))
