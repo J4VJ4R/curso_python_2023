@@ -1,14 +1,15 @@
 import tkinter as tk
 from tkinter import ttk
-
+from model.movie_dao import create_table, delete_table
+from model.movie_dao import Movie, save, showdata
 def menu_bar(root):
   bar_menu = tk.Menu(root)
   root.config(menu = bar_menu, width=300, height = 300)
 
   main_menu = tk.Menu(bar_menu, tearoff=0)
   bar_menu.add_cascade(label='Home', menu = main_menu)
-  main_menu.add_command(label='Create register on DB')
-  main_menu.add_command(label='Delete register on DB')
+  main_menu.add_command(label='Create register on DB', command=create_table)
+  main_menu.add_command(label='Delete register on DB', command=delete_table)
   main_menu.add_command(label='Exit', command=root.destroy)
 
   query_data = tk.Menu(bar_menu, tearoff=0)
@@ -97,9 +98,21 @@ class Frame(tk.Frame):
     self.save_button.config(state='disable')
     self.cancel_button.config(state='disable')
   def save_data(self):
+    movie = Movie(
+      self.my_name.get(),
+      self.my_duration.get(),
+      self.my_genre.get(),
+    )
+    #Movie objetc was create
     #Save data
+    save(movie)
+    #Update table
+    self.movies_table()
     self.fields_disabled()
   def movies_table(self):
+    #Recover movies
+    self.list_movies = showdata()
+    self.list_movies.reverse()
     #Create table
     self.table = ttk.Treeview(self, columns=('Name', 'Duration', 'Genre'))
     self.table.grid(row=4, column=0, columnspan=4)
@@ -109,7 +122,9 @@ class Frame(tk.Frame):
     self.table.heading('#2', text='DURATION')
     self.table.heading('#3', text='GENRE')
     #Fill some data
-    self.table.insert('', 0, text='1', values=('The Avengers', '2.35', 'Action'))
+    #Iteration of movies
+    for movie in self.list_movies:
+      self.table.insert('', 0, text=movie[0], values=(movie[1], movie[2], movie[3]))
     #Button editar
     self.edit_button = tk.Button(self, text="Edit")
     self.edit_button.config(width=20, font=('Arial', 12, 'bold'), fg='#DAD5D6', 
