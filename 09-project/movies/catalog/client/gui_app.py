@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 from tkinter import messagebox
-from model.movie_dao import create_table, delete_table, edit
+from model.movie_dao import create_table, delete_table, edit, delete_item
 from model.movie_dao import Movie, save, showdata
 def menu_bar(root):
   bar_menu = tk.Menu(root)
@@ -99,6 +99,7 @@ class Frame(tk.Frame):
     #Buttons configuration
     self.save_button.config(state='disable')
     self.cancel_button.config(state='disable')
+  #Save data
   def save_data(self):
     movie = Movie(
       self.my_name.get(),
@@ -143,11 +144,11 @@ class Frame(tk.Frame):
     self.edit_button.config(width=20, font=('Arial', 12, 'bold'), fg='#DAD5D6', 
                           bg='#158645', cursor='hand2', activebackground='#35BD6F')
     self.edit_button.grid(row=5, column=0, padx=10, pady=10)
-    #Button eliminar
-    self.cancel_button = tk.Button(self, text="Delete")
-    self.cancel_button.config(width=20, font=('Arial', 12, 'bold'), fg='#DAD5D6', 
+    #Delete button
+    self.delete_button = tk.Button(self, text="Delete", command=self.delete_data)
+    self.delete_button.config(width=20, font=('Arial', 12, 'bold'), fg='#DAD5D6', 
                           bg='#BD152E', cursor='hand2', activebackground='#E15370')
-    self.cancel_button.grid(row=5, column=1, padx=10, pady=10)
+    self.delete_button.grid(row=5, column=1, padx=10, pady=10)
   #Edit data
   def edit_data(self):
     try:
@@ -165,4 +166,17 @@ class Frame(tk.Frame):
       title = 'Edit data'
       message = 'You haven\'t selected any register'
       messagebox.showerror(title, message)
+  #Delete data
+  def delete_data(self):
+    try:
+      self.id_movie = self.table.item(self.table.selection())['text']
+      #Delete item
+      delete_item(self.id_movie)
+      #Update table
+      self.movies_table()
+    except:
+      title = 'Delete an item'
+      message = 'You haven\'t selected any register'
+      messagebox.showerror(title, message)
+      
 

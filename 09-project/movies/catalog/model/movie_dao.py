@@ -86,7 +86,7 @@ def edit(movie, id_movie):
   sql = f"""
     UPDATE movies
     SET name = '{movie.name}', duration = '{movie.duration}', genre = '{movie.genre}'
-    WHERE id_movie = '{id_movie}'
+    WHERE id_movie = {id_movie}
   """
 
   try:
@@ -95,4 +95,16 @@ def edit(movie, id_movie):
   except:
     title = 'Edit data'
     message = 'Not is posible edit this register'
+    messagebox.showerror(title, message)
+def delete_item(id_movie):
+  conection = ConectionDB()
+
+  sql = f'DELETE FROM movies WHERE id_movie =  {id_movie}'
+
+  try:
+    conection.cursor.execute(sql)
+    conection.close()
+  except:
+    title = 'Delete register'
+    message = 'Doesn\'t posible delete this register'
     messagebox.showerror(title, message)
