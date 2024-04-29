@@ -72,7 +72,7 @@ class Frame(tk.Frame):
     self.cancel_button.config(width=20, font=('Arial', 12, 'bold'), fg='#DAD5D6', 
                           bg='#BD152E', cursor='hand2', activebackground='#E15370')
     self.cancel_button.grid(row=3, column=2, padx=10, pady=10)
-
+  #Available fields
   def fields_available(self):
     #Entry configuration
     #Clean fields
@@ -86,7 +86,10 @@ class Frame(tk.Frame):
     #Buttons configuration
     self.save_button.config(state='normal')
     self.cancel_button.config(state='normal')
+  #Disable fields
   def fields_disabled(self):
+    #Restar id movie
+    self.id_movie = None
     #Entry configuration
     #Clean fields
     self.my_name.set('')
@@ -174,6 +177,8 @@ class Frame(tk.Frame):
       delete_item(self.id_movie)
       #Update table
       self.movies_table()
+      #Restar id
+      self.id_movie = None
     except:
       title = 'Delete an item'
       message = 'You haven\'t selected any register'
