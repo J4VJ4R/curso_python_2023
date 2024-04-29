@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
-from model.movie_dao import create_table, delete_table
+from tkinter import messagebox
+from model.movie_dao import create_table, delete_table, edit
 from model.movie_dao import Movie, save, showdata
 def menu_bar(root):
   bar_menu = tk.Menu(root)
@@ -25,6 +26,7 @@ class Frame(tk.Frame):
     self.root = root
     self.pack()
     # self.config(bg='green')
+    self.id_movie = None
     self.movies_fields()
     self.fields_disabled()
     self.movies_table()
@@ -105,17 +107,28 @@ class Frame(tk.Frame):
     )
     #Movie objetc was create
     #Save data
-    save(movie)
+    if self.id_movie == None:
+      save(movie)
+    else:
+      edit(movie, self.id_movie)
     #Update table
     self.movies_table()
     self.fields_disabled()
+  #Data tables of movies
   def movies_table(self):
     #Recover movies
     self.list_movies = showdata()
     self.list_movies.reverse()
     #Create table
     self.table = ttk.Treeview(self, columns=('Name', 'Duration', 'Genre'))
-    self.table.grid(row=4, column=0, columnspan=4)
+    self.table.grid(row=4, column=0, columnspan=4, sticky='nse')
+    #Scrollbar table
+    self.scroll = ttk.Scrollbar(self,
+                                orient='vertical',
+                                command=self.table.yview
+                                )
+    self.scroll.grid(row=4, column=4, sticky='nse')
+    self.table.configure(yscrollcommand=self.scroll.set)
     #Headers names
     self.table.heading('#0', text='ID')
     self.table.heading('#1', text='NAME')
@@ -126,7 +139,7 @@ class Frame(tk.Frame):
     for movie in self.list_movies:
       self.table.insert('', 0, text=movie[0], values=(movie[1], movie[2], movie[3]))
     #Button editar
-    self.edit_button = tk.Button(self, text="Edit")
+    self.edit_button = tk.Button(self, text="Edit", command=self.edit_data)
     self.edit_button.config(width=20, font=('Arial', 12, 'bold'), fg='#DAD5D6', 
                           bg='#158645', cursor='hand2', activebackground='#35BD6F')
     self.edit_button.grid(row=5, column=0, padx=10, pady=10)
@@ -135,3 +148,21 @@ class Frame(tk.Frame):
     self.cancel_button.config(width=20, font=('Arial', 12, 'bold'), fg='#DAD5D6', 
                           bg='#BD152E', cursor='hand2', activebackground='#E15370')
     self.cancel_button.grid(row=5, column=1, padx=10, pady=10)
+  #Edit data
+  def edit_data(self):
+    try:
+      self.id_movie = self.table.item(self.table.selection())['text']
+      self.name_movie = self.table.item(self.table.selection())['values'][0]
+      self.duration_movie = self.table.item(self.table.selection())['values'][1]
+      self.genre_movie = self.table.item(self.table.selection())['values'][2]
+      #For avaible fields in the table
+      self.fields_available()
+      #For entry data in the fields
+      self.entry_name.insert(0, self.name_movie)
+      self.entry_duration.insert(0, self.duration_movie)
+      self.entry_genre.insert(0, self.genre_movie)
+    except:
+      title = 'Edit data'
+      message = 'You haven\'t selected any register'
+      messagebox.showerror(title, message)
+

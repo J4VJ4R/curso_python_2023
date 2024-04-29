@@ -78,3 +78,21 @@ def showdata():
     messagebox.showwarning(title, message)
   
   return list_movies
+
+#Edit data
+def edit(movie, id_movie):
+  conection = ConectionDB()
+
+  sql = f"""
+    UPDATE movies
+    SET name = '{movie.name}', duration = '{movie.duration}', genre = '{movie.genre}'
+    WHERE id_movie = '{id_movie}'
+  """
+
+  try:
+    conection.cursor.execute(sql)
+    conection.close()
+  except:
+    title = 'Edit data'
+    message = 'Not is posible edit this register'
+    messagebox.showerror(title, message)
