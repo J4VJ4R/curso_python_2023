@@ -1,0 +1,27 @@
+*{
+  color: blue;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+body{
+  background-color: white;
+}
+.menu{
+  background-color: gray;
+}
+.menu-nav{
+  list-style: none;
+}
+.menu-nav__item, a{
+  color: white;
+  display: inline-block;
+  text-decoration: none;
+}
+.menu-nav__item, a:hover{
+  color: rgb(222, 77, 77);
+}
+.menu-nav__item, a:active{
+  color: rgb(82, 82, 190);
+}
+.menu-nav__item, a::after{
+  content: " | ";
+}
