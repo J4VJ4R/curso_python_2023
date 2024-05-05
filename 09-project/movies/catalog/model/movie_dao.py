@@ -39,4 +39,72 @@ def delete_table():
     messagebox.showerror(title, message)
 class Movie:
   def __init__(self, name, duration, genre):
-    self.id_
+    self.id_movie = None
+    self.name = name
+    self.duration = duration
+    self.genre = genre
+
+  def __str__(self):
+    return f'Movie[{self.name}, {self.duration}, {self.genre}]'
+
+def save(movie):
+  conection = ConectionDB()
+
+  sql = f"""
+    INSERT INTO movies (name, duration, genre)
+    VALUES('{movie.name}', '{movie.duration}', '{movie.genre}')
+  """
+  try:
+    conection.cursor.execute(sql)
+    conection.close()
+  except:
+    title = 'Conection register'
+    message = 'The table movie doesn\'t is created'
+    messagebox.showerror(title, message)
+
+def showdata():
+  conection = ConectionDB()
+
+  list_movies = []
+  sql = """SELECT * FROM movies"""
+
+  try:
+    conection.cursor.execute(sql)
+    list_movies = conection.cursor.fetchall()
+    conection.close()
+  except:
+    title = 'Conection to register'
+    message = 'Create table on databases'
+    messagebox.showwarning(title, message)
+  
+  return list_movies
+
+#Edit data
+def edit(movie, id_movie):
+  conection = ConectionDB()
+
+  sql = f"""
+    UPDATE movies
+    SET name = '{movie.name}', duration = '{movie.duration}', genre = '{movie.genre}'
+    WHERE id_movie = {id_movie}
+  """
+
+  try:
+    conection.cursor.execute(sql)
+    conection.close()
+  except:
+    title = 'Edit data'
+    message = 'Not is posible edit this register'
+    messagebox.showerror(title, message)
+def delete_item(id_movie):
+  conection = ConectionDB()
+
+  sql = f'DELETE FROM movies WHERE id_movie =  {id_movie}'
+
+  try:
+    conection.cursor.execute(sql)
+    conection.close()
+  except:
+    title = 'Delete register'
+    message = 'Doesn\'t posible delete this register'
+    messagebox.showerror(title, message)
