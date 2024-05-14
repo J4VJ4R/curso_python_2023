@@ -26,4 +26,40 @@ body{
   height: 50px;
   display: grid;
 }
-
+.social-icon{
+  width: 250px;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  justify-self: end;
+  margin-right: 50px;
+}
+.social-icon a{
+  color: #fff;
+  font-size: 28px;
+}
+.social-icon a:hover{
+  color: rgb(53, 50, 50);
+}
+.nav{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 90px;
+}
+.nav-logo{
+  margin-left: 50px;
+  display: flex;
+  align-items: center;
+}
+.nav-link{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-right: 50px;
+}
+.nav-link a{
+  text-decoration: none;
+  color: #000;
+  border-bottom: 1px solid #000;
+}
