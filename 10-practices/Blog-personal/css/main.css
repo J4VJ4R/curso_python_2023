@@ -1,0 +1,29 @@
+/*Roboto Slaf 400, 700
+  Roboto 400 500 700 900
+  Roboto Mono 400 500 700
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&family=Roboto+Slab:wght@400;700&family=Roboto:wght@400;500;700;900&display=swap');
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body{
+  font-family: 'Robot Mono', sans-serif;
+  font-size: 400;
+}
+/* HEADER */
+.header{
+  width: 100%;
+  height: 140px;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+}
+.social{
+  background-color: #e6162e;
+  width: 100%;
+  height: 50px;
+  display: grid;
+}
+
