@@ -1,8 +1,9 @@
-product = ""
 product_list = []
 counter = 0
-while product != "Done":
+while True:
   product = input("Type your product: ")
+  if product == "Done":
+    break
   product_list.append(product)
   counter += 1
 
