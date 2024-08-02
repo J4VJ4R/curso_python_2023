@@ -1,14 +1,18 @@
 class Animal:
-  def __init__(self, age, type) -> None:
+  def __init__(self, type, age) -> None:
     self.age = age
     self.type = type
 
+  def __str__(self) -> str:
+    return f"Animal[The {self.type} is {self.age}]"
+
+class Pet(Animal):
+  def __init__(self, type, age, name) -> None:
+    super().__init__(type, age)
+    self.name = name
+  
   def info(self):
-    print(f"The {self.type} is {self.age}")
+    print(f"The {self.type} is {self.age} her name is {self.name}")
 
-Animal1 = Animal("4 months", "Dog")
-Animal2 = Animal("1 year", "Cat")
-
-
-Animal1.info()
-Animal2.info()
+pet1 = Pet("Dog", "1 Year", "Moon")
+pet1.info()
