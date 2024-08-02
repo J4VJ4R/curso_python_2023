@@ -3,9 +3,12 @@ class Animal:
     self.age = age
     self.type = type
 
-Animal1 = Animal("4 meses", "Perro")
-Animal2 = Animal("1 año", "Gato")
+  def info(self):
+    print(f"The {self.type} is {self.age}")
+
+Animal1 = Animal("4 months", "Dog")
+Animal2 = Animal("1 year", "Cat")
 
 
-print(Animal1.type)
-print(Animal2.type)
+Animal1.info()
+Animal2.info()
