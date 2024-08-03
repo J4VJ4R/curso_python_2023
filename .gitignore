@@ -1,2 +1,8 @@
 greates/__pycache__
 11-register-pets/__pycache__
+*/__pycache__
+*/*/__pycache__
+12-modules/my_package/__pycache__
+*/.env
+*/*/.env
+.env
