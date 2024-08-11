@@ -7,3 +7,6 @@ greates/__pycache__
 */*/.env
 .env
 14-project01/env
+14-project01/movies/env
+*/*/*/__pycache__
+14-project01/catalogue/client/__pycache__
