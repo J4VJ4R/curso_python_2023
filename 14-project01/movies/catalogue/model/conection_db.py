@@ -7,6 +7,6 @@ class ConectionDB:
     self.cursor = self.conection.cursor()
 
   #Close database
-  def close_databse(self):
+  def close_database(self):
     self.conection.commit()
     self.conection.close()
