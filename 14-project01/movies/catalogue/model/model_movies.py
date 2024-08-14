@@ -82,10 +82,9 @@ def list_movies():
 
 def edit_movie(movie, movie_id):
   conection = ConectionDB()
-  movie_id = int(movie_id)
   sql = f"""UPDATE movies
   SET name = '{movie.name}', duration = '{movie.duration}', genre = '{movie.genre}'
-  WHERE movie_id = {movie_id}"""
+  WHERE id_movie = {movie_id}"""
 
   try:
     conection.cursor.execute(sql)
@@ -94,3 +93,15 @@ def edit_movie(movie, movie_id):
     title = 'Data edit'
     message = 'An error has ocurred here'
     messagebox.showerror(title, message)
+
+def delete_movie(movie_id):
+  conection = ConectionDB()
+  sql = f"DELETE FROM movies WHERE id_movie = {movie_id}"
+
+  try:
+    conection.cursor.execute(sql)
+    conection.close_database()
+  except:
+    title = 'Delete data'
+    message = "Data wasn't deleted"
+    messagebox.showinfo(title, message)

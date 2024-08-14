@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 from model.model_movies import create_table, delete_table
-from model.model_movies import Movie, save_movie, list_movies, edit_movie
+from model.model_movies import Movie, save_movie, list_movies, edit_movie, delete_movie
 from tkinter import messagebox
 
 def menu_bar(root):
@@ -91,6 +91,7 @@ class Frame(tk.Frame):
     self.cancel_button.config(state='normal')
 
   def deactivate_fields(self):
+    self.movie_id = None
     self.my_name.set('')
     self.my_duration.set('')
     self.my_genre.set('')
@@ -151,8 +152,8 @@ class Frame(tk.Frame):
                            cursor='hand2', activebackground='#36bd6f')
     self.edit_button.grid(row=5, column=0, padx=10, pady=10)
 
-    #Cancel
-    self.delete_button = tk.Button(self, text='Delete')
+    #Delete
+    self.delete_button = tk.Button(self, text='Delete', command=self.delete_data)
     self.delete_button.config(width=20, font=('Arial', 12, 'bold'),
                            fg='#DAD5D6', bg='#bd152e',
                            cursor='hand2', activebackground='#e15370')
@@ -174,5 +175,20 @@ class Frame(tk.Frame):
       title = 'Edit data'
       message = 'It wasn\'t selected any data'
       messagebox.showerror(title, message)
+
+  def delete_data(self):
+    try:
+      self.movie_id = self.table.item(self.table.selection())['text']
+      delete_movie(self.movie_id)
+      title = 'Delete data'
+      message = 'Data was deleted'
+      messagebox.showinfo(title, message)
+      self.data_table()
+      self.movie_id = None
+    except:
+      title = 'Delete data'
+      message = 'Data wasn\'t deleted'
+      messagebox.showerror(title, message)
+      
 
 
