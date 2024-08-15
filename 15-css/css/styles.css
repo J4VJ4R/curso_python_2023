@@ -1,0 +1,47 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+.menu{
+  background: rgb(26, 170, 232);
+}
+
+.menu-nav{
+  list-style: none;
+  padding: 10px 0px;
+}
+
+.menu-nav__item{
+  display: inline-block;
+  padding: 0px 5px;
+}
+
+.menu-nav__item a{
+  color: #fff;
+  text-decoration: none;
+}
+
+/* seudo clases */
+.menu-nav__item a:hover{
+  color: aqua;
+}
+
+.menu-nav__item a:active{
+  color: rgb(199, 90, 90);
+}
+
+/* seudo elementos */
+.menu-nav__item a::after{
+  content: " | ";
+}
+
+/* Boxe */
+main{
+  width: 100%;
+  height: 300px;
+  border: 10px solid gray;
+  padding: 20px 35px;
+}
