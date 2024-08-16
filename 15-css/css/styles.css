@@ -45,3 +45,38 @@ main{
   border: 10px solid gray;
   padding: 20px 35px;
 }
+
+.btn{
+  border-style: none;
+  background: purple;
+  color: #fff;
+  font-size: 16px;
+  padding: 15px 20px;
+  margin: 0 10px;
+}
+
+.btn:hover{
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.small{
+  font-size: 14px;
+  padding: 10px 15px;
+}
+
+.medium{
+  font-size: 16px;
+  padding: 15px 20px;
+}
+
+.big{
+  font-size: 18px;
+  padding: 20px 25px;
+}
+
+.blue{background: blue;}
+.green{background: green;}
+.orange{background: orange;}
+
+.border{border-radius: 30px;}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+  
+    .Caja{
+      background: blue;
+      width: 200px;
+      height: 200px;
+      margin: 20px;
+    }
+
+    .position{
+      background: green;
+      position: absolute;
+      right: 0px;
+      bottom: 0px;
+      margin: 10px;
+
+    }
+    .padre{
+      width: 600px;
+      height: 400px;
+      position: relative;
+      background: orange;
+    }
+  </style>
+</head>
+<body>
+  <div class="Caja"></div>
+  <div class="padre">
+    <div class="Caja position"></div>
+  </div>
+  <div class="Caja">Caja</div>
+  <div class="Caja">Caja</div>
+  <div class="Caja">Caja</div>
+  <div class="Caja">Caja</div>
+  <div class="Caja">Caja</div>
+  <div class="Caja">Caja</div>
+</body>
+</html>
