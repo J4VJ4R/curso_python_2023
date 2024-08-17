@@ -48,3 +48,12 @@ def login():
     
     flash(error)
   return render_template('auth/login.html')
+
+#mantener sesión iniciada
+@bp.before_app_request #Se verifica sesión antes de abrir cada modulo
+def load_logged_in_user():
+  user_id = session.get('user_id')
+  if user_id is None:
+    g.user = None
+  else:
+    g.user = User.query.get_or_404(user_id)
