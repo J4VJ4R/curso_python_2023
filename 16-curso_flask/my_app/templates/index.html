@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}Página de inicio {% endblock %}
+
+{% block content %}
+  {% if name %}
+    <h1>test go: {{name}}  </h1>
+  {% else %}
+    <h1>test go: desconocido  </h1>
+  {% endif %}
+
+  <h2>Lista de amigos</h2>
+  {% for friend in friends %}
+  <ul>
+    <li>{{friend}}</li>
+  </ul>
+  {% endfor %}
+  <br>
+  <h4>La fecha de hoy es {{ date | today }}</h4>
+{% endblock %}
+
