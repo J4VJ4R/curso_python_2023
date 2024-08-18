@@ -1,0 +1,21 @@
+.socal-icons ul li{
+  float: left;
+  list-style: none;
+  padding: 12px;
+}
+.socal-icons ul{
+  padding-left: 0px;
+}
+
+.socal-icons ul li a{
+  background: #415364;
+  border-radius: 50%;
+  width: 30px;
+  height: 41px;
+  padding: 10px 14px;
+  color:white;
+}
+.socal-icons ul li a:hover{
+  background: #1e1e1e;
+  color:white;
+}
