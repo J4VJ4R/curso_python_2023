@@ -1,0 +1,45 @@
+
+{% extends 'base.html'%}
+{% block content %}
+<div class="container">
+
+        <div class="header">
+            <h2 class="mb-3 mt-3">Tus publicaciones</h2>
+            <div class="d-flex justify-content-between mb-3">
+                <p>¡Bienvenido al panel de administración de blogs!</p>
+                <a href="create.html" class="btn btn-outline-success">AÑADIR BLOG</a>
+            </div>
+        </div>
+        <table class=" table">
+            <thead>
+                <tr>
+                    <th class="fs-5">Título del Blog </th>
+                    <th colspan="2" class="fs-5">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Título del primer blog </td>
+                    <td>
+                        <a href="update.html" class="btn btn-sm btn-warning">Editar</a>
+                        <a href="#" class="btn btn-sm btn-danger">Eliminar</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Título del segundo blog</td>
+                    <td>
+                        <a href="#" class="btn btn-sm btn-warning">Editar</a>
+                        <a href="#" class="btn btn-sm btn-danger">Eliminar</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Título del tercer blog</td>
+                    <td>
+                        <a href="#" class="btn btn-sm btn-warning">Editar</a>
+                        <a href="#" class="btn btn-sm btn-danger">Eliminar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
