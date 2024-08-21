@@ -9,6 +9,9 @@ def create_app():
   app.config.from_object('config.Config')
   #inicio de base de datos
   db.init_app(app)
+  #configurar idioma
+  import locale
+  locale.setlocale(locale.LC_ALL, 'es_ES')
   #registrar vistas
   from blog import home
   app.register_blueprint(home.bp)

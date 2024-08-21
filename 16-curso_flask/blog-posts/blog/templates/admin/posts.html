@@ -4,10 +4,10 @@
 <div class="container">
 
         <div class="header">
-            <h2 class="mb-3 mt-3">Tus publicaciones</h2>
+            <h2 class="mb-3 mt-3">{% block title %}Tus publicaciones{% endblock %}</h2>
             <div class="d-flex justify-content-between mb-3">
                 <p>¡Bienvenido al panel de administración de blogs!</p>
-                <a href="create.html" class="btn btn-outline-success">AÑADIR BLOG</a>
+                <a href="{{url_for('post.create')}}" class="btn btn-outline-success">AÑADIR BLOG</a>
             </div>
         </div>
         <table class=" table">
@@ -18,28 +18,19 @@
                 </tr>
             </thead>
             <tbody>
+                {% for post in allposts | reverse %}
+                {% if g.user.id == post.author %}
                 <tr>
-                    <td>Título del primer blog </td>
+                    <td>{{post.title}}</td>
                     <td>
-                        <a href="update.html" class="btn btn-sm btn-warning">Editar</a>
-                        <a href="#" class="btn btn-sm btn-danger">Eliminar</a>
+                        <a href="{{url_for('post.update', id = post.id)}}" class="btn btn-sm btn-warning">Editar</a>
+                        <a href="{{url_for('post.delete', id = post.id)}}" class="btn btn-sm btn-danger">Eliminar</a>
                     </td>
                 </tr>
-                <tr>
-                    <td>Título del segundo blog</td>
-                    <td>
-                        <a href="#" class="btn btn-sm btn-warning">Editar</a>
-                        <a href="#" class="btn btn-sm btn-danger">Eliminar</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Título del tercer blog</td>
-                    <td>
-                        <a href="#" class="btn btn-sm btn-warning">Editar</a>
-                        <a href="#" class="btn btn-sm btn-danger">Eliminar</a>
-                    </td>
-                </tr>
+                {% endif %}
+                {% endfor %}
             </tbody>
         </table>
     </div>
 {% endblock %}
+{% block message %} alert-success {% endblock %}
