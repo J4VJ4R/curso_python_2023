@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %} Bienvenido {% endblock %}
+{% block content %}
+<!-- incluir menu de navegación -->
+ {% include 'nav.html' %}
+ <!-- incluir menu de navegación -->
+ {% include 'home.html' %}
+ <!-- incluimos sección de proyectos -->
+ {% include 'portfolio.html' %}
+ <!-- incluimos contacto -->
+ {% include 'contact.html' %}
+ <!-- incluimos footer -->
+ {% include 'footer.html' %}
+
+{% endblock %}
