@@ -8,8 +8,8 @@ def create_app():
   app = Flask(__name__)
   #configuración del proyecto
   app.config.from_mapping(
-    DEBUG = True,
-    SECRET_KEY = 'DEV',
+    DEBUG = False,
+    SECRET_KEY = 'devtodo*',
     SQLALCHEMY_DATABASE_URI = "sqlite:///todolist.db"
   )
   #Inicio de la conexión en db
