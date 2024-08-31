@@ -11,6 +11,14 @@ app.config['MAIL_PASSWORD'] = '5c0bc09fd5e9eb'
 app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USE_SSL'] = False
 
+# Configuración de email usando el servidor SMTP de cPanel
+# app.config['MAIL_SERVER'] = 'mail.spacecode.com.co'
+# app.config['MAIL_PORT'] = 465
+# app.config['MAIL_USERNAME'] = 'info@spacecode.com.co'
+# app.config['MAIL_PASSWORD'] = 'tu_password'  # Sustituye con la contraseña de tu cuenta de correo
+# app.config['MAIL_USE_TLS'] = False
+# app.config['MAIL_USE_SSL'] = True  # Debe ser True ya que el puerto 465 es SSL
+
 mail = Mail(app)
 @app.route('/')
 def index():
