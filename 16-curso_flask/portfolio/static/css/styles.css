@@ -17,3 +17,9 @@
   background-color: #EB0045;
   color: white;
 }
+.text-language{
+  color: rgba(255, 255, 255, 0.55);
+}
+.li-decoration{
+  list-style-type: none;
+}

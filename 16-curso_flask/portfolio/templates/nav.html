@@ -13,21 +13,30 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" href="#home">Inicio</a></li>
+        <li class="nav-item"><a class="nav-link" href="#home">{{messages['home']}}</a></li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#portfolio" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Proyectos
+            {{messages['projects']}}
         </a>
+          <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item text-language" href="#portfolioweb">{{messages['webpages']}}</a></li>
+            <li><a class="dropdown-item text-language" href="#portfoliolanding">{{messages['landging']}}</a></li>
+            <li><a class="dropdown-item text-language" href="#portfoliowebapps">{{messages['webapps']}}</a></li>
+            <li><a class="dropdown-item text-language" href="#portfolioappmovil">{{messages['mobileapp']}}</a></li>
+            <li><a class="dropdown-item text-language" href="#portfolioiot">IoT</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="#contact">{{messages['contacts']}}</a></li>
+      </ul>
+      <li class="nav-item dropdown li-decoration ">
+        <a class="nav-link dropdown-toggle text-language" href="#portfolio" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          {{messages['language']}}
+      </a>
         <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
-          <li><a class="dropdown-item text-white" href="#portfolioweb">Páginas Web</a></li>
-          <li><a class="dropdown-item text-white" href="#portfoliolanding">Landing Page</a></li>
-          <li><a class="dropdown-item text-white" href="#portfoliowebapps">Aplicativos Web</a></li>
-          <li><a class="dropdown-item text-white" href="#portfolioappmovil">Aplicaciones Móviles</a></li>
-          <li><a class="dropdown-item text-white" href="#portfolioiot">IoT</a></li>
+          <li><a class="dropdown-item text-language" href="/es">{{messages['spanish']}}</a></li>
+          <li><a class="dropdown-item text-language" href="/en">{{messages['english']}}</a></li>
         </ul>
       </li>
-        <li class="nav-item"><a class="nav-link" href="#contact">Contactos</a></li>
-      </ul>
     </div>
   </div>
 </nav>

@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_mail import Mail, Message
+from language import es, en
 
 app = Flask(__name__)
 
@@ -20,9 +21,25 @@ app.config['MAIL_USE_SSL'] = False
 # app.config['MAIL_USE_SSL'] = True  # Debe ser True ya que el puerto 465 es SSL
 
 mail = Mail(app)
+
+#normal index
 @app.route('/')
 def index():
-  return render_template('index.html')
+  return indexlang('es')
+#index with language
+@app.route('/<lang>')
+def indexlang(lang):
+  messages = get_language(lang)
+  return render_template('index.html', messages = messages, lang = lang)
+#for change language
+def get_language(lang):
+  if lang == "es":
+    return es.messages
+  elif lang == "en":
+    return en.messages
+  else:
+    return es.messages
+
 
 @app.route('/email', methods = ['GET', 'POST'])
 def send_mail():
