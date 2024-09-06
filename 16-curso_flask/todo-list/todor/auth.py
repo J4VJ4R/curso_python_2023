@@ -5,11 +5,14 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from .models import User
 from todor import db
 import functools
+from language import es, en
+from todor.language import get_language
 
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
-@bp.route('/register', methods = ('GET', 'POST'))
-def register():
+@bp.route('/register/<lang>', methods = ('GET', 'POST'))
+def register(lang):
+  messages = get_language(lang)
   if request.method == 'POST':
     username = request.form['username']
     password = request.form['password']
@@ -21,14 +24,15 @@ def register():
     if user_name == None:
       db.session.add(user)
       db.session.commit()
-      return redirect(url_for('auth.login'))
+      return redirect(url_for('auth.login', lang=lang))
     else:
       error = f'El usuario {username} ya está registrado'
     flash(error)
-  return render_template('auth/register.html')
+  return render_template('auth/register.html', messages = messages, lang = lang)
 
-@bp.route('/login', methods = ('GET', 'POST'))
-def login():
+@bp.route('/login/<lang>', methods = ('GET', 'POST'))
+def login(lang):
+  messages = get_language(lang)
   if request.method == 'POST':
     username = request.form['username']
     password = request.form['password']
@@ -45,10 +49,10 @@ def login():
     if error == None:
       session.clear()
       session['user_id'] = user.id
-      return redirect(url_for('todo.index'))
+      return redirect(url_for('todo.index', lang=lang))
     
     flash(error)
-  return render_template('auth/login.html')
+  return render_template('auth/login.html', messages = messages, lang = lang)
 
 #mantener sesión iniciada
 @bp.before_app_request #Se verifica sesión antes de abrir cada modulo

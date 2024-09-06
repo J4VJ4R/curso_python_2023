@@ -1,19 +1,19 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="container-sm">
-  <h3 class="text-center mb-3 mt-3">{% block title %}Ingresar tarea{% endblock %}</h3>
+  <h3 class="text-center mb-3 mt-3">{% block title %}{{messages['create_title']}}{% endblock %}</h3>
   <form action="" method="post">
     <div class="form-group">
-      <label for="title">Título</label>
+      <label for="title">{{messages['create_title2']}}</label>
       <input type="text" class="form-control" name="title" id="title" required>
       <br>
-      <label for="description">Descripción</label>
+      <label for="description">{{messages['create_description']}}</label>
       <textarea class="form-control" name="description" id="description" rows="5"></textarea>
     </div>
     <br>
     <div class="form-group">
-      <input type="submit" class="btn btn-primary" value="Guardar">
-      <a href="{{ url_for('todo.index')}}" class="btn btn-secondary">Cancelar</a>
+      <input type="submit" class="btn btn-primary" value="{{messages['save']}}">
+      <a href="{{ url_for('todo.index', lang=lang)}}" class="btn btn-secondary">{{messages['create_cancel']}}</a>
     </div>
   </form>
 </div>

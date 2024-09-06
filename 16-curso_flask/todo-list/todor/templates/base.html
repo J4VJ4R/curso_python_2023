@@ -24,19 +24,26 @@
           <div class="navbar-nav">
             {% if g.user %}
               <span class="nav-link active"> {{ g.user.username }}</span>
-              <a class="nav-link"  href="{{ url_for('todo.index')}}">Tareas</a>
-              <a class="nav-link" href="{{ url_for('auth.logout')}}">Cerrar sesión</a>
+              <a class="nav-link"  href="{{ url_for('todo.index', lang=lang)}}">{{messages['tasks']}}</a>
+              <a class="nav-link" href="{{ url_for('auth.logout', lang=lang)}}">{{messages['logout']}}</a>
             {% else %}
-              <a class="nav-link"  href="{{ url_for('auth.register')}}">Registrarse</a>
-              <a class="nav-link" href="{{ url_for('auth.login')}}">Inicio de sesión</a>
-              <a class="nav-link" href="https://portfolio.spacecode.com.co/">Portafolio</a>
+              <a class="nav-link"  href="{{ url_for('auth.register', lang=lang)}}">{{messages['signup']}}</a>
+              <a class="nav-link" href="{{ url_for('auth.login', lang=lang)}}">{{messages['login']}}</a>
+              <a class="nav-link" href="https://portfolio.spacecode.com.co/">{{messages['portfolio']}}</a>
             {% endif %}
+              <li class="nav-item dropdown li-decoration ">
+                <a class="nav-link dropdown-toggle text-language" href="#portfolio" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  {{messages['language']}}
+              </a>
+                <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item text-language" href="/es">{{messages['spanish']}}</a></li>
+                  <li><a class="dropdown-item text-language" href="/en">{{messages['english']}}</a></li>
+                </ul>
+              </li>
           </div>
         </div>
       </div>
     </nav>
-    {% block content %}
-    {% endblock %}
     {% for massage in get_flashed_messages() %}
     <div class="container mt-3">
       <div class="row">
@@ -48,6 +55,8 @@
       </div>
     </div>
     {% endfor %}
+    {% block content %}
+    {% endblock %}
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
