@@ -1,9 +1,9 @@
 {% extends 'base.html'%}
 {% block content %}
-    <div class="container">
+    <div class="container ">
     <form method="post" class="row mt-5" enctype="multipart/form-data">
         <div class="col-md-4">
-            <div class="text-center">
+            <div class="text-center mt-5">
                 {% if user.img == none %}
                 <img src="{{url_for('static', filename='/img/user-dark.png')}}" width="100" height="100" class="profile-image rounded-circle mb-2"
                     alt="Foto de perfil">
@@ -16,22 +16,23 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-8">
-            <h1>{% block title %} Perfil de Usuario{% endblock %}</h1>
+        <div class="col-md-8 ">
+            <div class="mt-5 text-white">God</div>
+            <h1>{% block title %} {{messages['profile_user']}}{% endblock %}</h1>
             <hr class="mb-4">
                 <div class="mb-3">
-                    <label for="username" class="form-label">Nombre de usuario</label>
+                    <label for="username" class="form-label">{{messages['username']}}</label>
                     <input type="text" class="form-control" id="username" name="username" value="{{user.username}}" required>
                 </div>
                 <div class="mb-3">
-                    <label for="email" class="form-label">Correo Electrónico</label>
+                    <label for="email" class="form-label">{{messages['email']}}</label>
                     <input type="email" class="form-control" id="email" name="email" value="{{user.email}}" readonly>
                 </div>
                 <div class="mb-3">
-                    <label for="password" class="form-label">Cambiar contraseña</label>
+                    <label for="password" class="form-label">{{messages['change_pass']}}</label>
                     <input type="password" class="form-control" id="password" name="password">
                 </div>
-                <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                <button type="submit" class="btn btn-primary">{{messages['update']}}</button>
             </div>
     </form>
     </div>

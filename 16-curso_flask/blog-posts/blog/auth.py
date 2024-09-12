@@ -4,11 +4,13 @@ from .models import User
 from blog import db
 import functools
 from werkzeug.utils import secure_filename
+from blog.language import get_language
 
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
-@bp.route('/register', methods = ('GET', 'POST'))
-def register():
+@bp.route('/register/<lang>', methods = ('GET', 'POST'))
+def register(lang):
+  messages = get_language(lang)
   if request.method == 'POST':
     username = request.form.get('username')
     email = request.form.get('email')
@@ -24,14 +26,19 @@ def register():
       #guardar datos
       db.session.commit()
       #redirige a login
-      return redirect(url_for('auth.login'))
+      return redirect(url_for('auth.login', lang=lang))
     else:
-      error = f'El correo {email} ya está registrado'
-    flash(error)
-  return render_template('auth/register.html')
+      if lang == 'es':
+        error = f'El correo {email} ya está registrado'
+      elif lang == 'en':
+        error = f'The email {email} is already registered'
 
-@bp.route('/login', methods = ('GET', 'POST'))
-def login():
+    flash(error)
+  return render_template('auth/register.html', messages = messages, lang = lang)
+
+@bp.route('/login/<lang>', methods = ('GET', 'POST'))
+def login(lang):
+  messages = get_language(lang)
   if request.method == 'POST':
     email = request.form.get('email')
     password = request.form.get('password')
@@ -40,14 +47,17 @@ def login():
     user = User.query.filter_by(email = email).first()
     #comparamos los datos
     if user == None or not check_password_hash(user.password, password):
-      error = 'Correo o contraseña incorrecta'
+      if lang == 'es':
+        error = 'Correo or contraseña incorrecta'
+      elif lang == 'en':
+        error = 'Wrong password o email'        
     #iniciando sesión
     if error is None:
       session.clear()
       session['user_id'] = user.id
-      return redirect(url_for('post.posts'))
+      return redirect(url_for('post.posts', lang=lang))
     flash(error)
-  return render_template('auth/login.html')
+  return render_template('auth/login.html', messages = messages, lang = lang)
 #cargar el inicio de sesión
 @bp.before_app_request
 def load_logged_in_user():
@@ -58,10 +68,11 @@ def load_logged_in_user():
   else:
     g.user = User.query.get_or_404(user_id)
 #para salir del aplicativo
-@bp.route('/logout')
-def logout():
+@bp.route('/logout/<lang>')
+def logout(lang):
+  messages = get_language(lang)
   session.clear()
-  return redirect(url_for('home.index'))
+  return redirect(url_for('home.index', lang = lang))
 #para requerir iniciar sesión
 def login_required(view):
   @functools.wraps(view)
@@ -70,10 +81,11 @@ def login_required(view):
       return redirect(url_for('auth.login'))
     return view(**kwargs)
   return wrapped_view
-@bp.route('/profile/<int:id>', methods = ('GET', 'POST'))
+@bp.route('/profile/<int:id>/<lang>', methods = ('GET', 'POST'))
 #autenticación requerida
 @login_required
-def profile(id):
+def profile(id, lang):
+  messages = get_language(lang)
   #se obtiene el usuario
   user = User.query.get_or_404(id)
   if request.method == 'POST':
@@ -94,6 +106,6 @@ def profile(id):
       flash(error)
     else:
       db.session.commit()
-      return redirect(url_for('auth.profile', id = user.id))
+      return redirect(url_for('auth.profile', id = user.id, messages = messages, lang = lang))
     flash(error)  
-  return render_template('auth/profile.html', user = user)
+  return render_template('auth/profile.html', user = user, messages = messages, lang = lang)

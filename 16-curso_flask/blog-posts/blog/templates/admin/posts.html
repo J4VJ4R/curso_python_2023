@@ -3,18 +3,19 @@
 {% block content %}
 <div class="container">
 
-        <div class="header">
-            <h2 class="mb-3 mt-3">{% block title %}Tus publicaciones{% endblock %}</h2>
+        <div class="header ">
+            <div class="mt-5 text-white">God</div>
+            <h2 class="mb-3 mt-3">{% block title %}{{messages['posts_title']}}{% endblock %}</h2>
             <div class="d-flex justify-content-between mb-3">
-                <p>¡Bienvenido al panel de administración de blogs!</p>
-                <a href="{{url_for('post.create')}}" class="btn btn-outline-success">AÑADIR BLOG</a>
+                <p>{{messages['posts_desc1']}}</p>
+                <a href="{{url_for('post.create', lang=lang)}}" class="btn btn-outline-success">{{messages['addblog']}}</a>
             </div>
         </div>
         <table class=" table">
             <thead>
                 <tr>
-                    <th class="fs-5">Título del Blog </th>
-                    <th colspan="2" class="fs-5">Acciones</th>
+                    <th class="fs-5">{{messages['posts_title2']}} </th>
+                    <th colspan="2" class="fs-5">{{messages['options']}}</th>
                 </tr>
             </thead>
             <tbody>
@@ -23,8 +24,8 @@
                 <tr>
                     <td>{{post.title}}</td>
                     <td>
-                        <a href="{{url_for('post.update', id = post.id)}}" class="btn btn-sm btn-warning">Editar</a>
-                        <a href="{{url_for('post.delete', id = post.id)}}" class="btn btn-sm btn-danger">Eliminar</a>
+                        <a href="{{url_for('post.update', id = post.id, lang=lang)}}" class="btn btn-sm btn-warning">{{messages['posts_edit']}}</a>
+                        <a href="{{url_for('post.delete', id = post.id, lang=lang)}}" class="btn btn-sm btn-danger">{{messages['posts_delete']}}</a>
                     </td>
                 </tr>
                 {% endif %}

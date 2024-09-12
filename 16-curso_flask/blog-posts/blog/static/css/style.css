@@ -48,4 +48,22 @@ h6 {
     margin-bottom: 1.25rem;
     color: #727272;
 }
+.text-language:hover{
+    background-color: black;
+    color: white;
+}
+.text-language__post:hover{
+    background-color: black;
+    color: white;
+}
+.text-language__post:focus{
+    background-color: black;
+    color: white;
+}
+.text-language{
+    color: white;
+}
+.text-language:focus{
+    color: black;
+}
 

@@ -3,28 +3,28 @@
     <section>
         <div class="container">
             <div class="header mb-4 mt-4">
-                <h1 class="h3">{% block title %}Crear Blog{% endblock %}</h1>
+                <h1 class="h3">{% block title %}{{messages['create_blog']}}{% endblock %}</h1>
             </div>
             <div class="body">
                 <form method="post">
                     <div class="mb-3">
-                        <label for="url" class="form-label">URL de Blog</label>
-                        <input type="text" class="form-control" id="url" name="url" required placeholder="ejemplo-title">
+                        <label for="url" class="form-label">{{messages['create_url']}}</label>
+                        <input type="text" class="form-control" id="url" name="url" required placeholder="{{messages['example_title']}}">
                     </div>
                     <div class="mb-3">
-                        <label for="title" class="form-label">Título</label>
-                        <input type="text" class="form-control" id="title" name="title" required placeholder="Título del blog">
+                        <label for="title" class="form-label">{{messages['example_title2']}}</label>
+                        <input type="text" class="form-control" id="title" name="title" required placeholder="{{messages['example_title2']}}">
                     </div>
                     <div class="mb-3">
-                        <label for="info" class="form-label">Descripción</label>
-                        <input type="text" class="form-control" id="info" name="info" required placeholder="Título del blog">
+                        <label for="info" class="form-label">{{messages['create_description']}}</label>
+                        <input type="text" class="form-control" id="info" name="info" required placeholder="{{messages['create_description']}}">
                     </div>
                     <div class="mb-3">
-                        <label for="content" class="form-label">Contenido</label>
+                        <label for="content" class="form-label">{{messages['create_content']}}</label>
                         <textarea class="form-control" id="content" name="content" rows="6"
-                            placeholder="Contenido del blog"></textarea>
+                            placeholder="{{messages['create_content_example']}}"></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary">Crear</button>
+                    <button type="submit" class="btn btn-primary">{{messages['create_button']}}</button>
                 </form>
             </div>
         </div>
